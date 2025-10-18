@@ -1,11 +1,11 @@
-# Docker, Laravel, React, Nginx, MySQL8 - Multiplataforma (Windows/Linux)
+# Docker, Laravel, Vue3, Nginx, MySQL8 - Multiplataforma (Windows/Linux)
 
-Proyecto Full-Stack con Laravel 12 (Backend) y React+Vite (Frontend) usando Docker, optimizado para compatibilidad Windows/Linux.
+Proyecto Full-Stack con Laravel 11 (Backend) y Vue3+Vite (Frontend) usando Docker, optimizado para compatibilidad Windows/Linux.
 
 ## 🚀 Características
 
-- **Backend:** Laravel 12 con PHP 8.2
-- **Frontend:** React 19 + Vite + TypeScript + Material-UI
+- **Backend:** Laravel 11 con PHP 8.2
+- **Frontend:** Vue 3 + Vite + TypeScript + Vue Router + Pinia
 - **Base de datos:** MySQL 8.0
 - **Servidor web:** Nginx
 - **Compatible:** Windows y Linux
@@ -33,21 +33,22 @@ mkdir backend
 ```
 
 - **backend/**: aquí irá el código de Laravel.
-- **frontend/**: aquí irá el código de React.
+- **frontend/**: aquí irá el código de Vue3.
 
 ### 3. Configuración de variables de entorno
 
 El archivo `.env` ya está configurado con valores por defecto:
 ```bash
-MYSQL_DATABASE=apuesta
+MYSQL_DATABASE=bdalumnos
 MYSQL_USER=admin
-MYSQL_PASSWORD=admin
-MYSQL_ROOT_PASSWORD=admin
+MYSQL_PASSWORD=admin123
+MYSQL_ROOT_PASSWORD=root123
 ```
 
 El archivo `frontend/.env` está configurado para desarrollo:
 ```bash
-VITE_API_BASE_URL=http://server-nginx
+VITE_API_BASE_URL=http://localhost:8081
+VITE_APP_NAME="Laravel Vue3 App"
 ```
 
 ## 🚀 Ejecución del proyecto
@@ -59,12 +60,13 @@ docker compose run --rm php82 composer create-project laravel/laravel . .
 ```
 > Nota: El segundo punto indica que el proyecto se creará dentro de la carpeta `backend`.
 
-### 2. Crear el proyecto React en la carpeta frontend
+### 2. Crear el proyecto Vue3 en la carpeta frontend
+
+El proyecto Vue3 ya está inicializado con la estructura básica. Solo necesitas instalar las dependencias:
 
 ```bash
-docker compose run --rm frontend npx create-react-app . --template typescript
+docker compose run --rm frontend npm install
 ```
-> Puedes luego instalar las dependencias adicionales (Material-UI, Vite, etc.) según tus necesidades.
 
 ### 3. Levantar los servicios
 
@@ -78,7 +80,7 @@ Esto construirá y levantará todos los servicios definidos en el archivo `docke
 
 ## 🌐 Servicios disponibles
 
-- **Frontend (React):** [http://localhost:5173](http://localhost:5173)
+- **Frontend (Vue3):** [http://localhost:5173](http://localhost:5173)
 - **Backend (Laravel):** [http://localhost:8081](http://localhost:8081)
 - **Base de datos MySQL:** `localhost:3310`
 
@@ -92,14 +94,17 @@ nombre-proyecto/
 │   ├── app/
 │   ├── routes/
 │   └── composer.json
-├── frontend/                  # Aplicación React
+├── frontend/                  # Aplicación Vue3
 │   ├── src/
+│   │   ├── views/
+│   │   ├── router/
+│   │   └── components/
 │   ├── package.json
-│   └── vite.config.ts
+│   └── vite.config.js
 ├── docker_stack/              # Configuraciones Docker
 │   ├── nginx/
 │   ├── php/
-│   └── react/
+│   └── vue/
 ├── docker-compose.yml         # Configuración principal
 └── .env                       # Variables de entorno
 ```
@@ -112,7 +117,7 @@ nombre-proyecto/
 ## 📝 Notas
 
 - Asegúrate de crear las carpetas `backend` y `frontend` antes de iniciar los servicios.
-- Si ya tienes proyectos existentes, puedes copiar el código de Laravel en `backend/` y el de React en `frontend/`.
+- Si ya tienes proyectos existentes, puedes copiar el código de Laravel en `backend/` y el de Vue3 en `frontend/`.
 - Los comandos están preparados para funcionar con esta estructura.
 
 ## 🐛 Solución de problemas comunes
