@@ -1,5 +1,5 @@
 .env
 src
 docker_stack/mysql/
-frontend
-backend
+frontend/node_modules/
+backend/vendor/
